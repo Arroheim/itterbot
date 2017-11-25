@@ -2,13 +2,14 @@
 #copyright 2015
 #Twitter (iPain7)
 import json
+import random
 from time import sleep
 
 import requests
 
 # Here, insert the token Bot Father gave you for your bot.
 # https://telegram.me/botfather
-from src.main.messages import msg_welcome, msg_test, msg_os, msg_list
+from src.main.messages import msg_welcome, msg_test, msg_os, msg_list, msg_random
 
 token_api = '400493844:AAF7DhkTKMziVJLzW4KFn2jQ2C1-QTc0BEQ'
 url = 'https://api.telegram.org/bot%s/' % token_api
@@ -56,16 +57,23 @@ def commands(Text):
             message = msg_welcome
             return message
 
-        if '/test' in Text:
+        elif '/test' in Text:
             message = msg_test
             return message
 
-        if '/list' in Text:
+        elif '/list' in Text:
             message = msg_list
             return message
 
-        if '/sysinfo' in Text:
+        elif '/sysinfo' in Text:
             message = msg_os
+            return message
+
+        else:
+            message = 'Я тебя, ' + \
+                      msg_random[random.randint(0, len(msg_random))] + \
+                      ' что бы ты ' + \
+                      msg_random[random.randint(0, len(msg_random))]
             return message
 """
 ## never ending loop ##
